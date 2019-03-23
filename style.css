@@ -60,9 +60,7 @@ html, body{
   height: 100%;
   margin: 0px 15px;
 }
-.nav-link:hover{
-  background-color: black;
-}
+
 .intro {
   width: 100%;
   display: flex;
