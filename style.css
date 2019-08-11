@@ -26,21 +26,28 @@ html, body{
   flex-direction: column;
 }
 .blog-main-container{
-  background-color: #F8F8FF;
+
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(270deg, #f9f1f1, #f9f9f9, #ffffff, #fbf7f5);
+  background-size: 800% 800%;
+
+  animation: bgshift 10s ease infinite;
 }
 .blog-container{
-  background-color: #F8F8FF;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  background: linear-gradient(270deg, #f9f1f1, #f9f9f9, #ffffff, #fbf7f5);
+  background-size: 800% 800%;
+
+  animation: bgshift 10s ease infinite;
 }
 .blog h3{
   font-family: 'Montserrat';
@@ -272,4 +279,10 @@ html, body{
 }
 .post-excerpt:hover{
   border-left: 1px solid #3253BE;
+}
+
+@keyframes bgshift {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
 }
