@@ -1,28 +1,59 @@
 html, body{
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 .archive-container{
-  margin-top: 80px;
 }
-.container{
-  height: 100vh;
+.arrow{
+  text-decoration: none;
+  color: black;
+}
+.return{
+  text-decoration: none;
+  color: #606060;
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  transition: 0.3s;
+}
+.return:hover{
+  color: black;
+}
+.content{
+  background-color: #F8F8FF;
   display: flex;
   flex-direction: column;
 }
-.content{
-  width:100%;
-  height:100%;
+.blog-main-container{
   background-color: #F8F8FF;
+  width: 100%;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .blog-container{
-  background-color: white;
+  background-color: #F8F8FF;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+.blog h3{
+  font-family: 'Montserrat';
+  font-size: 1.5em;
+}
+.blog{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  margin: 10px;
 }
 .sidebar{
   width: 100%;
@@ -63,9 +94,15 @@ html, body{
 
 .intro {
   width: 100%;
+  height: 100vh;
+  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: url('images/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .intro-card{
   background-color: white;
@@ -75,6 +112,7 @@ html, body{
   height: 400px;
   margin: 1rem;
   padding: 15px;
+  opacity:0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -84,6 +122,7 @@ html, body{
 }
 .intro-card h1{
   font-family: 'Montserrat';
+  font-size: 2.5em;
 }
 .intro-card img{
   width: 120px;
@@ -122,7 +161,32 @@ html, body{
 .info a:hover{
     color: grey;
 }
+.ml10 {
+  position: relative;
+  font-weight: 900;
+  font-size: 4em;
+}
 
+.ml10 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml10 .letters {
+  display: inline-block;
+  line-height: 1em;
+  transform-origin: 0 0;
+}
+.ml11{
+  opacity: 0;
+}
+.ml12{
+  opacity: 0;
+}
 .post-container{
   width:70%;
   padding: 50px;
@@ -197,7 +261,8 @@ html, body{
   display: inline;
 }
 .post-excerpt{
-  width: 600px;
+  width: 60vw;
+  max-width: 800px;
   padding:10px;
   border-left: 1px solid transparent;
 }
