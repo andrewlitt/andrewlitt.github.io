@@ -99,7 +99,7 @@ html, body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('images/bg.jpg');
+  background: url('images/bg.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
