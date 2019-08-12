@@ -120,8 +120,6 @@ html, body{
   background-color: white;
   background: #fff;
   border-radius: 2px;
-  width: 450px;
-  height: 400px;
   margin: 1rem;
   padding: 15px;
   opacity:0;
@@ -273,8 +271,7 @@ html, body{
   display: inline;
 }
 .post-excerpt{
-  width: 60vw;
-  max-width: 800px;
+
   padding:10px;
   border-left: 1px solid transparent;
   transition: 0.3s;
