@@ -9,13 +9,18 @@ html, body{
   text-decoration: none;
   color: black;
 }
+.cPhoto{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .return{
   text-decoration: none;
   color: #606060;
   position: fixed;
   left: 20px;
   top: 20px;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 .return:hover{
   color: black;
@@ -272,6 +277,7 @@ html, body{
   max-width: 800px;
   padding:10px;
   border-left: 1px solid transparent;
+  transition: 0.3s;
 }
 .post-excerpt h1{
   font-family: 'Montserrat';

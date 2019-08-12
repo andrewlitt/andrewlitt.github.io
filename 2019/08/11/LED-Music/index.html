@@ -1,0 +1,84 @@
+<html>
+  <head>
+  <title>a.litt</title>
+  <!-- Hey friends looking at my code, get the hell outta here this shit is more personal than the blog -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway|Montserrat:400,600|Sedgwick+Ave|Lora" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+</head>
+
+  <body>
+      <div class="content">
+          <div class="blog-container">
+ <a class ="return" href="/"><i class="fas fa-home fa-2x"></i></a>
+  <div class="post card-1">
+     <!-- Title -->
+
+     <h2 class="post-title">
+         <a href="/2019/08/11/LED-Music/">
+             Music Reactive LEDs with MSGEQ7 & ATmega328p
+         </a>
+     </h2></br></br>
+     <p class="post-date">
+         2019-08-11
+     </p>
+     <div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/s/i1ixb/ynlxxl" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+
+<p><img width="100%" src="header.png"></p>
+<center><em>Progress to the final product</em></center>
+
+<p><a href="https://github.com/andrewlitt/Lightshow-2.0" target="_blank" rel="noopener">GitHub Repo</a></p>
+<h2 id="The-Idea"><a href="#The-Idea" class="headerlink" title="The Idea"></a>The Idea</h2><p>Goal: to control the brightness of LEDs in proportion to the beat of the music!</p>
+<p>First off, this project is not a unique one - it’s inspired by <a href="https://www.google.com/search?q=Music+LED+MSGEQ7&amp;rlz=1C1CHBF_enCA758CA758&amp;oq=Music+LED+MSGEQ7&amp;aqs=chrome..69i57j69i61.6242j1j0&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">a sizable number of projects online</a> - but it’s my own take.</p>
+<p>The <a href="https://mix-sig.com/index.php/msgeq7-seven-band-graphic-equalizer-display-filter" target="_blank" rel="noopener">MSGEQ7</a> chip takes in an audio input, and gives a DC output corresponding to the relative ‘loudness’ of a set of frequencies present. An external chip pulses the <em>STROBE</em> pin to shift a multiplexer through outputting each of the different frequencies.</p>
+<p><img class="cPhoto" width="70%" src="msgeq7.PNG"></p>
+<center><em>Summary of the MSGEQ7 Operation</em></center>
+
+<p>For this, we’ll be using an ATmega328p microcrontroller with and Arduino bootloader. It’ll interact with the MQGEQ7 and use the output to control the gate voltage for 3 transistors. The transistors are connected to the R,G,B channels of the LED strip, which will match the Bass, Mid, and Treble of the music respectively.</p>
+<h2 id="The-Design"><a href="#The-Design" class="headerlink" title="The Design"></a>The Design</h2><p>First off - the MSGEQ7 support circuitry. This matches the ‘typical application’ circuit in the datasheet. Nothing to change here.<br><img class="cPhoto" width="40%" src="msgeq7circuit.PNG"></p>
+<p>Next, the microcontroller. Support circuitry on the left, I/O on the right. All unused I/O was kept available for future use with F breakout headers.<br><img class="cPhoto" width="80%" src="atmega328.PNG"></p>
+<p>Below, all the auxiliary circuitry.</p>
+<ul>
+<li>Power Supply: The board will use the 12V power supply that came with the LEDs, stepped down with a linear regulator to 5V for the electronics.</li>
+<li>Audio Input: Wiring from the audio jack to the MQGEQ7 input, as suggested by the datasheet.</li>
+<li>LED Strip Output: Breakout headers connecting to the LEDs, and the transistor wiring.</li>
+</ul>
+<p><img class="cPhoto" width="90%" src="support.png"></p>
+<h2 id="Making-the-PCB"><a href="#Making-the-PCB" class="headerlink" title="Making the PCB"></a>Making the PCB</h2><p>Given this project was my first actual PCB design, there was quite the learning curve. After a bit of research, KiCad won out as the tool of choice!</p>
+<p>In the design, grounding was a big concern. The “analogWrite” function for Arduino digital pins is really a PWM signal that <em>averages</em> to the desired analog output voltage. With the LED drain currents at roughly 2-4A, this creates a lot of noise. If these currents were sunk to ground near the sensitive analog audio currents it would create enough interference to render the design worthless. This was noticed during breadboard testing of the circuit.</p>
+<p>In consideration, the goals in the design process were:</p>
+<ul>
+<li>Physically separate the digital PWM and analog circuitry</li>
+<li>Run most traces on the top layer, to make a bottom ground plane as continuous as possible</li>
+<li>Allow for it to be reprogrammed on-board</li>
+<li>Keeping the board open to future improvements by including breakouts for unused ATmega pins</li>
+<li>Having it be small!</li>
+</ul>
+<p><img class="cPhoto" width="100%" src="PCB.PNG"></p>
+<p>Eventually, this is the design that was reached! The transistor currents run from the top right down to the barrel jack right beside it, while the analog currents run from the left side. Breaking out the analog pins 1-5 with traces on the bottom was intentional, to add as a barrier between the two.</p>
+<p>To achieve size and to test my soldering, all SMD components were an 805 footprint and all capacitors were ceramic.</p>
+<h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><p><em>More to come</em></p>
+<h2 id="Putting-it-All-Together"><a href="#Putting-it-All-Together" class="headerlink" title="Putting it All Together"></a>Putting it All Together</h2><p><em>More to come</em></p>
+
+ </div>
+</div>
+
+
+      </div>
+  </body>
+  <footer>
+  <script src="/script.js"></script>
+</footer>
+
+</html>

@@ -30,11 +30,12 @@ anime.timeline({loop: false})
     duration: 500
   });
 
-  anime({
-    targets: '.arrow',
-    translateY: 10,
-    scale: 1.2,
-    direction: 'alternate',
-    loop: true,
-    easing: 'easeInOutSine'
-  });
+anime({
+  targets: '.arrow',
+  translateY: 8,
+  scale: 1.2,
+  duration: 2000,
+  direction: 'alternate',
+  loop: true,
+  easing: 'easeInOutSine'
+});
