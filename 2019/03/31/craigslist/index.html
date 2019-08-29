@@ -1,0 +1,132 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <title>a.litt</title>
+  <!-- Hey friends looking at my code, get the hell outta here this shit is more personal than the blog -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/highlight.css">
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Raleway|Montserrat:400,600|Sedgwick+Ave|Lora" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+  <body>
+      <div class="content">
+          <div class="blog-container">
+ <a class ="return" href="/"><i class="fas fa-home fa-2x"></i></a>
+  <div class="post card-1">
+     <!-- Title -->
+
+     <h2 class="post-title">
+         <a href="/2019/03/31/craigslist/">
+             Python Practice: Craigslist Markov Chains
+         </a>
+     </h2></br></br>
+     <p class="post-date">
+         2019-03-31
+     </p>
+     <p><img width="100%" src="header.PNG"></p>
+<p>I’ve been looking to brush up on some coding skills. In a mix of inspiration from an <a href="https://devpost.com/software/personalit-tweet" target="_blank" rel="noopener">old hackathon project</a> and the <a href="https://www.congratulationspod.com/" target="_blank" rel="noopener">Congratulations Podcast</a> - lets make some fake craigslist posts with Python.</p>
+<p>Here’s the libraries we’re going to use:</p>
+<ul>
+<li><a href="http://docs.python-requests.org/en/master/" target="_blank" rel="noopener">Requests</a></li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank" rel="noopener">BeautifulSoup</a></li>
+<li><a href="https://github.com/jsvine/markovify" target="_blank" rel="noopener">Markovify</a></li>
+<li><a href="https://docs.python.org/3/library/re.html" target="_blank" rel="noopener">Regex</a></li>
+</ul>
+<p>Here’s the code:</p>
+<pre><code class="python">
+  import requests
+  from bs4 import BeautifulSoup
+  import markovify
+  import re
+  from nltk import tokenize
+
+  # Script parameters
+  cityname = 'toronto' # must match the craigslist format of 'cityname.craigslist.org'
+  numSentences = 4     # number of sentences for the markov model to print!
+
+  # Figure out how many pages there are
+  r = requests.get('https://'+cityname+'.craigslist.org/search/mis')
+  content = BeautifulSoup(r.content,'html.parser')
+  TotalCount = int(content.find(class_='totalcount').string)
+  numPages = TotalCount//120+1;
+
+  # Initialize Markov chain models using Markovify. Using silly dummy sentences to start.
+  titleModel = markovify.Text("Looking for a guy named John Doe")
+  locationModel = markovify.Text("Main st.")
+  textModel = markovify.Text("Met John the other day, have you seen him?")
+  sentenceModels = []
+
+  # For all the pages of missed connections
+  for page in range(numPages):
+
+    # Get the post list page, parse it with Beautifulsoup
+    url = 'https://'+cityname+'.craigslist.org/search/mis?s=' + str(120*page)
+    r = requests.get(url)
+    content = BeautifulSoup(r.content,'html.parser')
+
+    # For each post link in the list
+    for postNum, post in enumerate(content.find_all('a',class_='result-title')):
+
+        # Get the actual post
+        url = post.get('href')
+        r = requests.get(url)
+        postContent = BeautifulSoup(r.content,'html.parser')
+        postMeta = postContent.find(class_='postingtitletext')
+
+        # If the post exists (Sometimes the link leads to a post that has been removed)
+
+        if postMeta:
+            postTitle = postMeta.find(id ='titletextonly').string
+            postLocation = postMeta.small
+            postText = postContent.find(id='postingbody')
+            postText = postText.div.next_sibling.string
+            postText = re.sub('[|]|:|-|;|"|(\(|\))|[\.][\.][\.]|[\']','',postText)
+            postText = tokenize.sent_tokenize(postText)
+            postTitle = re.sub('[|]|:|-|;|"|(\(|\))|[\.][\.][\.]|[\']','',postTitle)
+            title =  markovify.Text(postTitle)
+            titleModel = markovify.combine(models=[titleModel, title])
+
+            if len(postText) > len(sentenceModels):
+                while len(postText) > len(sentenceModels):
+                    sentenceModels.append(markovify.Text('I'))
+
+            for i, sentence in enumerate(postText):
+                text = markovify.Text(sentence)
+                sentenceModels[i] = markovify.combine(models=[sentenceModels[i], text])
+            print('Processed Post ' + str(postNum+1+120*page) +'/'+ str(TotalCount-1)+' - ' + postTitle)
+
+  # Generate Sentences from the Model
+  print('\nMARKOV GENERATED\n')
+  print(titleModel.make_sentence(tries = 100))
+  print('\n')
+  for i in range(numSentences):
+    s = sentenceModels[i].make_sentence(tries = 100)
+    if(s != 'None'):
+        print(s)
+
+</code></pre>
+
+ </div>
+</div>
+
+
+      </div>
+  </body>
+  <footer>
+  <script src="/script.js"></script>
+</footer>
+
+</html>
