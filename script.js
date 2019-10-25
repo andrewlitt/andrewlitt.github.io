@@ -39,3 +39,11 @@ anime({
   loop: true,
   easing: 'easeInOutSine'
 });
+
+fetch('https://api.noopschallenge.com/vexbot')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    console.log(JSON.stringify(myJson));
+  });
