@@ -38,15 +38,22 @@
          2019-03-31
      </p>
      <p><img width="100%" src="header.PNG"></p>
-<p>I’ve been looking to brush up on some coding skills. In a mix of inspiration from an <a href="https://devpost.com/software/personalit-tweet" target="_blank" rel="noopener">old hackathon project</a> and the <a href="https://www.congratulationspod.com/" target="_blank" rel="noopener">Congratulations Podcast</a> - lets make some fake craigslist posts with Python.</p>
+<p>I’ve been looking to learn a bit more Python. In a mix of inspiration from an <a href="https://devpost.com/software/personalit-tweet" target="_blank" rel="noopener">old hackathon project</a> and the <a href="https://www.congratulationspod.com/" target="_blank" rel="noopener">Congratulations Podcast</a> - lets generate some fake craigslist posts with Python.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Markov_chain" target="_blank" rel="noopener">Markov Chain</a>, simply, is a model of probabilities for transitioning between states. It doesn’t generate any ‘new’ insights, it just strictly bases its conclusions on the data provided to it. We’re going to use one to make a crude natural language model, with the inputs being a feed of Craigslist posts that we’ll scrape with Python. <em>Spoiler: this makes it funny.</em></p>
+<p>How can we use it for language? Well - language isn’t random. When we say a word, grammar and language often dictate for another word to follow. As an example, given a Mad-lib of “My name … “, the next word after <em>name</em> - most of the time - is, well, <em>is.</em> With enough sentences fed into a Markov Chain, it can quickly ‘learn’ general sentence structure, such as:</p>
+<p>“I like …”, “I am …”, “I was … then …”, and so on.</p>
+<p>As for the gaps - that’s where the material fed to the Markov chain starts filling in like a Mad-Lib. With Craigslist posts, that makes it… interesting.</p>
+<p>To make the ‘flow’ of generated seem natural, we’re going to make models for each sentence. These posts tend to be 4-5 sentences in length, starting with an introduction and gradually moving through their, uh, story. Funny enough, it actually works. Below, we get into the code.</p>
+<p>The results were, uhhh, interesting. Simply, I have a <a href="https://github.com/andrewlitt/Markovs-Craigslist" target="_blank" rel="noopener">Github Repo</a> for the code, and shall leave execution as an exercise left to the reader.</p>
 <p>Here’s the libraries we’re going to use:</p>
 <ul>
 <li><a href="http://docs.python-requests.org/en/master/" target="_blank" rel="noopener">Requests</a></li>
 <li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank" rel="noopener">BeautifulSoup</a></li>
 <li><a href="https://github.com/jsvine/markovify" target="_blank" rel="noopener">Markovify</a></li>
 <li><a href="https://docs.python.org/3/library/re.html" target="_blank" rel="noopener">Regex</a></li>
+<li><a href="https://www.nltk.org/" target="_blank" rel="noopener">Natural Language Toolkit</a></li>
 </ul>
-<p>Here’s the code:</p>
+<p>Here’s the code, with comments:</p>
 <pre><code class="python">
   import requests
   from bs4 import BeautifulSoup
@@ -88,7 +95,6 @@
         postMeta = postContent.find(class_='postingtitletext')
 
         # If the post exists (Sometimes the link leads to a post that has been removed)
-
         if postMeta:
             postTitle = postMeta.find(id ='titletextonly').string
             postLocation = postMeta.small
