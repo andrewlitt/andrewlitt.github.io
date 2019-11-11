@@ -1,11 +1,12 @@
 <html>
+  <!-- Oh, hey - you're looking at the code? Yeah, that's cool. -->
   <head><meta name="generator" content="Hexo 3.9.0">
   <title>a.litt</title>
   <!-- Media Properties -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="a.litt">
   <meta property="og:image" content="https://andrewlitt.github.io/images/media.png">
   <meta property="og:description" content="Andrew Litt">
-  <!-- Hey friends looking at my code, get the hell outta here this shit is more personal than the blog -->
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/highlight.css">
   <!-- Google Fonts & FontAwesome -->
@@ -17,16 +18,24 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
+  <script>
+    particlesJS.load('particles-js', 'assets/particlesjs-config.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
+  </script>
+
 </head>
 
   <body>
       <div class="content">
           <img src="images/bg2.png" style="display:none;"/>
+<div id="particles-js"></div>
 <div id="introCanvas" class = "intro card-3">
-  <div class = "intro-card card-1">
+  <div class = "intro-card card-2">
         <h1 class="ml10">
           <span class="text-wrapper">
             <span class="letters">Hi, I'm Andrew</span>
@@ -34,20 +43,20 @@
         </h1>
         <p class="ml11">
           <span class="text-wrapper">
-            Toronto native, Queen's grad. Carved an internet corner for musings, rambles, and projects.
+            Toronto native, Queen's grad. Carved an internet corner for projects, posts, and plans.
+          </span>
         </p>
         <ul class="ml12 info">
           <li><a href="mailto:andrew.litt@queensu.ca"><i class="fas fa-envelope fa-2x" aria-hidden="true"></i></a></li>
           <li><a href="https://ca.linkedin.com/in/littandrew"><i class="fab fa-linkedin-in fa-2x" aria-hidden="true"></i></a></li>
           <li><a href="https://github.com/andrewlitt"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a></li>
         </ul>
-
   </div>
-    <a class ="arrow" href="#blog"><i class="fas fa-angle-down fa-2x"></i></a>
+    <a class ="arrow black" href="#projects"><i class="fas fa-angle-down fa-2x"></i></a>
 </div>
-<div id="blog" class="blog-main-container">
-    <div class="blog card-1">
-      <h3>Some Things I Wrote</h3>
+<div id="projects" class="projects-main-container">
+    <div class="blog project card-1">
+      <h3>Projects</h3>
       <div class="archive-container">
         
             <a class="content-link" href="/2019/08/11/LED-Music/">
@@ -58,10 +67,27 @@
 </a>
 
         
-            <a class="content-link" href="/2019/03/31/craigslist/">
+            <a class="content-link" href="/2018/04/25/Capstone/">
   <div class="post-excerpt">
-          <p class="post-date">2019-03-31</p>
-          <h1><span>Python Practice: Craigslist Markov Chains</h1>
+          <p class="post-date">2018-04-25</p>
+          <h1><span>Capstone: Single-Phase Inverter with FPGA SPWM Control </h1>
+  </div>
+</a>
+
+        
+      </div>
+    </div>
+    <a class ="arrow white" href="#blog"><i class="fas fa-angle-down fa-2x"></i></a>
+</div>
+<div id="blog" class="blog-main-container">
+    <div class="blog card-1">
+      <h3>Some Things I Wrote</h3>
+      <div class="archive-container">
+        
+            <a class="content-link" href="/2018/08/15/StartingUp/">
+  <div class="post-excerpt">
+          <p class="post-date">2018-08-15</p>
+          <h1><span>I'm Starting a Blog, I Guess</h1>
   </div>
 </a>
 
@@ -74,10 +100,10 @@
 </a>
 
         
-            <a class="content-link" href="/2018/08/15/StartingUp/">
+            <a class="content-link" href="/2019/03/31/craigslist/">
   <div class="post-excerpt">
-          <p class="post-date">2018-08-15</p>
-          <h1><span>I'm Starting a Blog, I Guess</h1>
+          <p class="post-date">2019-03-31</p>
+          <h1><span>Python Practice: Craigslist Markov Chains</h1>
   </div>
 </a>
 

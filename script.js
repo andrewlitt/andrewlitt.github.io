@@ -1,3 +1,4 @@
+
 // Wrap every letter in a span
 var textWrapper = document.querySelector('.ml10 .letters');
 textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w|'|,)/g, "<span class='letters'>$&</span>");
@@ -39,11 +40,3 @@ anime({
   loop: true,
   easing: 'easeInOutSine'
 });
-
-fetch('https://api.noopschallenge.com/vexbot')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(myJson) {
-    console.log(JSON.stringify(myJson));
-  });

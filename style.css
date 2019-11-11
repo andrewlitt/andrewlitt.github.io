@@ -7,7 +7,13 @@ html, body{
 }
 .arrow{
   text-decoration: none;
-  color: black;
+
+}
+.black{
+    color: black;
+}
+.white{
+    color: white;
 }
 .cPhoto{
   display: block;
@@ -30,8 +36,23 @@ html, body{
   display: flex;
   flex-direction: column;
 }
+#particles-js canvas{
+    margin-top: 100vh;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.projects-main-container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #13111b;
+}
 .blog-main-container{
-
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -40,8 +61,7 @@ html, body{
   justify-content: center;
   background: linear-gradient(270deg, #f9f1f1, #f9f9f9, #ffffff, #fbf7f5);
   background-size: 800% 800%;
-
-  animation: bgshift 10s ease infinite;
+  animation: bgshift 5s ease infinite;
 }
 .blog-container{
   width: 100%;
@@ -103,7 +123,9 @@ html, body{
   height: 100%;
   margin: 0px 15px;
 }
-
+.project{
+  z-index: 1;
+}
 .intro {
   width: 100%;
   height: 100vh;
@@ -144,7 +166,6 @@ html, body{
   padding: 0px 10px;
   margin-bottom: 30px;
   text-align: center;
-
 }
 .card-1 {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -288,4 +309,45 @@ html, body{
     0%{background-position:0% 51%}
     50%{background-position:100% 50%}
     100%{background-position:0% 51%}
+}
+
+@media screen and (max-width: 500px) {
+  .blog{
+    width: 90%;
+    margin: 0;
+    font-size: 8pt;
+  }
+  .intro-card{
+    width: 90%;
+    margin: 0;
+    font-size: 8pt;
+  }
+  .blog-container{
+
+  }
+  .post{
+    margin: 0;
+    padding: 60px;
+    width: 90%;
+    line-height: 2;
+  }
+  .post ul{
+    font-size: 12pt;
+  }
+  .post center{
+    font-size: 10pt;
+  }
+  .post img{
+    width: 100%;
+  }
+  .post-title{
+    font-size: 20pt;
+  }
+  .post-date{
+    font-size: 10pt
+  }
+  .return{
+    left: 5px;
+    top: 5px;
+  }
 }
