@@ -75,7 +75,7 @@ html, body{
   animation: bgshift 10s ease infinite;
 }
 .blog h3{
-  font-family: 'Montserrat';
+  font-family: 'Open Sans';
   font-size: 1.5em;
 }
 .blog{
@@ -153,7 +153,7 @@ html, body{
   align-items: center;
 }
 .intro-card h1{
-  font-family: 'Montserrat';
+  font-family: 'Open Sans';
   font-size: 2.5em;
 }
 .intro-card img{
@@ -161,7 +161,8 @@ html, body{
   border-radius:120px;
 }
 .intro-card p {
-  font-family: 'Raleway';
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 12pt;
   padding: 0px 10px;
   margin-bottom: 30px;
@@ -184,7 +185,8 @@ html, body{
 }
 .info li {
     display: inline-block;
-    padding-right: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .info a{
     color: black;
@@ -221,7 +223,7 @@ html, body{
 .post-container{
   width:70%;
   padding: 50px;
-  font-family: 'Raleway';
+  font-family: 'Roboto';
   margin-top: 50px;
   margin-bottom: 100px;
   margin-right: 50px;
@@ -238,7 +240,7 @@ html, body{
 
 .post-title{
   font-size: 30pt;
-  font-family: 'Montserrat';
+  font-family: 'Open Sans';
   font-weight: 500;
   display: inline;
   line-height: 1.6;
@@ -246,6 +248,7 @@ html, body{
 
 .post h1,h2,h3,h4{
   font-weight: 600;
+  font-family: 'Roboto'
 }
 
 .post-title a{
@@ -254,7 +257,7 @@ html, body{
 }
 
 .post-author{
-  font-family: 'Raleway'
+  font-family: 'Open Sans'
   font-size: 0.9em;
 }
 
@@ -279,7 +282,7 @@ html, body{
   margin-top: 20px;
   margin-bottom: 50px;
   width: 60%;
-  font-family: 'Lora';
+  font-family: 'Roboto';
   line-height: 175%;
   background: white;
 }
@@ -287,22 +290,25 @@ html, body{
   font-size: 14pt;
 }
 .post-date{
-  font-family: 'Raleway';
+  font-family: 'Roboto';
   color: #8e8e8e;
   display: inline;
 }
 .post-excerpt{
-
   padding:10px;
   border-left: 1px solid transparent;
   transition: 0.3s;
+  font-weight: 300;
+  border-radius: 2px;
 }
 .post-excerpt h1{
-  font-family: 'Montserrat';
-  font-weight: 400;
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 .post-excerpt:hover{
   border-left: 1px solid #3253BE;
+  background-color: #F5F5F5;
+
 }
 
 @keyframes bgshift {
@@ -327,7 +333,7 @@ html, body{
   }
   .post{
     margin: 0;
-    padding: 60px;
+    padding-top: 60px;
     width: 90%;
     line-height: 2;
   }
