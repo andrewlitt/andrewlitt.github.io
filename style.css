@@ -55,7 +55,7 @@ html, body{
 }
 .blog-main-container{
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   min-height: 800px;
   display: flex;
   flex-direction: column;
