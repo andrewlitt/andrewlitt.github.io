@@ -43,7 +43,6 @@ html, body{
 }
 
 .card-intro{
-  opacity: 0;
 }
 .card-intro-bio{
   font-family: 'Roboto';
@@ -147,12 +146,12 @@ html, body{
   transform-origin: 0 0;
 }
 .animate-2{
-  opacity: 0;
 }
 .animate-3{
+}
+.clear{
   opacity: 0;
 }
-
 .post-container{
   width: 100%;
   display: flex;
@@ -165,7 +164,7 @@ html, body{
 }
 .post-container img{
   max-width: 100%;
-  border: 2px solid black;
+  border: 1px solid grey;
 }
 
 .post-title{
@@ -253,10 +252,14 @@ html, body{
     100%{background-position:0% 51%}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
 
   #particles-js canvas{
     opacity: 0;
+  }
+  .intro{
+    background-color: #fcf8e5;
+    background-image: none;
   }
   .card{
     width: 90%;
@@ -267,11 +270,17 @@ html, body{
     font-family: 'Roboto';
     font-size: 1.5em;
   }
+  .post-container{
+    background: white;
+  }
   .post{
     margin: 0;
+    padding-left: 0;
+    padding-right: 0;
     padding-top: 60px;
     width: 90%;
     line-height: 2;
+    box-shadow: none;
   }
   .post ul{
     font-size: 12pt;
