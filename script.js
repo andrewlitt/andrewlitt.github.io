@@ -1,11 +1,11 @@
 
 // Wrap every letter in a span
-var textWrapper = document.querySelector('.ml10 .letters');
-textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w|'|,)/g, "<span class='letters'>$&</span>");
+var textWrapper = document.querySelector('.animate-1 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w|'|,)/g, "<span class='letter'>$&</span>");
 
 anime.timeline({loop: false})
   .add({
-    targets: '.intro-card',
+    targets: '.card-intro',
     opacity: 1,
     easing:'easeInQuad',
     duration: 300
@@ -13,19 +13,19 @@ anime.timeline({loop: false})
     targets: '',
     duration: 200
   }).add({
-    targets: '.ml10 .letters',
+    targets: '.animate-1 .letter',
     rotateY: [-90, 0],
     duration: 1000,
     delay: function(el, i) {
       return 40 * i;
     }
   }).add({
-    targets: '.ml11',
+    targets: '.animate-2',
     opacity: 1,
     easing:'easeInOutSine',
     duration: 500
   }).add({
-    targets: '.ml12',
+    targets: '.animate-3',
     opacity: 1,
     easing:'easeInOutSine',
     duration: 500

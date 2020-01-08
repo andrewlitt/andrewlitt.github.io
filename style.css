@@ -2,24 +2,89 @@ html, body{
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+  width: 100%;
 }
-.archive-container{
-}
+
 .arrow{
   text-decoration: none;
-
 }
-.black{
+.arrow-black{
     color: black;
 }
-.white{
+.arrow-white{
     color: white;
 }
-.cPhoto{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+
+.blog h3{
+  font-family: 'Open Sans';
+  font-size: 1.5em;
 }
+
+.card {
+  background-color: white;
+  background: #fff;
+  border-radius: 2px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card h1{
+  font-family: 'Open Sans';
+  font-size: 2.5em;
+}
+.card h2 {
+  font-family: 'Open Sans';
+  font-size: 1.5em;
+}
+
+.card-intro{
+  opacity: 0;
+}
+.card-intro-bio{
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 12pt;
+  padding: 0px 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.card-intro-info{
+    text-decoration: none;
+    color: black;
+    padding: 0;
+    margin: 10px 0px;
+}
+.card-intro-info li {
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.card-intro-info a{
+    color: black;
+}
+.card-intro-info a:hover{
+    color: grey;
+}
+
+.card-projects{
+  z-index: 1;
+}
+
+.shadow-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.shadow-2 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.shadow-3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
 .return{
   text-decoration: none;
   color: #606060;
@@ -31,11 +96,7 @@ html, body{
 .return:hover{
   color: black;
 }
-.content{
-  background-color: #F8F8FF;
-  display: flex;
-  flex-direction: column;
-}
+
 #particles-js canvas{
     margin-top: 100vh;
     position: absolute;
@@ -43,167 +104,36 @@ html, body{
     height: 100%;
     z-index: 0;
 }
-.projects-main-container{
-  width: 100%;
-  height: 100vh;
-  min-height: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #13111b;
-}
-.blog-main-container{
-  width: 100%;
-  height: 100vh;
-  min-height: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(270deg, #f9f1f1, #f9f9f9, #ffffff, #fbf7f5);
-  background-size: 800% 800%;
-  animation: bgshift 5s ease infinite;
-}
-.blog-container{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: linear-gradient(270deg, #f9f1f1, #f9f9f9, #ffffff, #fbf7f5);
-  background-size: 800% 800%;
 
-  animation: bgshift 10s ease infinite;
-}
-.blog h3{
-  font-family: 'Open Sans';
-  font-size: 1.5em;
-}
-.blog{
-  background-color: white;
+.container{
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 40px;
-  margin: 10px;
-}
-.sidebar{
-  width: 100%;
-  position: fixed;
-  top:0;
-  background-color: #3253BE;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
-.nav-list{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-.nav-list h1{
-  font-family: 'Sedgwick Ave';
-  color: #F8F8FF;
-  margin: 10px 15px;
-}
-.nav-link {
-  display: inline-block;
-  text-decoration: none;
-  color: #F8F8FF;
-  font-family: 'Raleway';
-  width: 100%;
-  height: 100%;
-  margin: 0px 15px;
-}
-.project{
-  z-index: 1;
-}
 .intro {
-  width: 100%;
-  height: 100vh;
-  min-height: 800px;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: url('images/bg2.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
-.intro-card{
-  background-color: white;
-  background: #fff;
-  border-radius: 2px;
-  margin: 1rem;
-  padding: 15px;
-  opacity:0;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.projects{
+  background-color: #13111b;
 }
-.intro-card h1{
-  font-family: 'Open Sans';
-  font-size: 2.5em;
+.blog{
+  background: linear-gradient(270deg, #f9f1f1, #f9f9f9, #ffffff, #fbf7f5);
+  background-size: 800% 800%;
+  animation: bgshift 5s ease infinite;
 }
-.intro-card img{
-  width: 120px;
-  border-radius:120px;
-}
-.intro-card p {
-  font-family: 'Roboto';
-  font-weight: 300;
-  font-size: 12pt;
-  padding: 0px 10px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-.card-1 {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.card-2 {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-.card-3 {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-.info{
-    text-decoration: none;
-    color: black;
-    padding: 0;
-    margin: 10px 0px;
-}
-.info li {
-    display: inline-block;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-.info a{
-    color: black;
-}
-.info a:hover{
-    color: grey;
-}
-.ml10 {
+.animate-1 {
   position: relative;
   font-weight: 900;
   font-size: 4em;
 }
-
-.ml10 .text-wrapper {
+.animate-1 .text-wrapper {
   position: relative;
   display: inline-block;
   padding-top: 0.2em;
@@ -211,31 +141,28 @@ html, body{
   padding-bottom: 0.1em;
   overflow: hidden;
 }
-
-.ml10 .letters {
+.animate-1 .letter {
   display: inline-block;
   line-height: 1em;
   transform-origin: 0 0;
 }
-.ml11{
+.animate-2{
   opacity: 0;
 }
-.ml12{
+.animate-3{
   opacity: 0;
-}
-.post-container{
-  width:70%;
-  padding: 50px;
-  font-family: 'Roboto';
-  margin-top: 50px;
-  margin-bottom: 100px;
-  margin-right: 50px;
-  margin-left: 50px;
-  line-height: 200%;
-  box-shadow: 3px 3px 6px #888888;
-  border: 1px solid lightgrey;
 }
 
+.post-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(270deg, #f9f1f1, #f9f9f9, #ffffff, #fbf7f5);
+  background-size: 800% 800%;
+  animation: bgshift 10s ease infinite;
+}
 .post-container img{
   max-width: 100%;
   border: 2px solid black;
@@ -260,7 +187,7 @@ html, body{
 }
 
 .post-author{
-  font-family: 'Open Sans'
+  font-family: 'Open Sans';
   font-size: 0.9em;
 }
 
@@ -304,14 +231,20 @@ html, body{
   font-weight: 300;
   border-radius: 2px;
 }
-.post-excerpt h1{
+.post-excerpt h3{
   font-family: 'Roboto';
   font-weight: 300;
+  font-size: 2.0em;
 }
 .post-excerpt:hover{
   border-left: 1px solid #3253BE;
   background-color: #F5F5F5;
+}
 
+.cPhoto{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes bgshift {
@@ -321,18 +254,18 @@ html, body{
 }
 
 @media screen and (max-width: 500px) {
-  .blog{
-    width: 90%;
-    margin: 0;
-    font-size: 8pt;
-  }
-  .intro-card{
-    width: 90%;
-    margin: 0;
-    font-size: 8pt;
-  }
-  .blog-container{
 
+  #particles-js canvas{
+    opacity: 0;
+  }
+  .card{
+    width: 90%;
+    margin: 0;
+    font-size: 8pt;
+  }
+  .post-excerpt h3{
+    font-family: 'Roboto';
+    font-size: 1.5em;
   }
   .post{
     margin: 0;
